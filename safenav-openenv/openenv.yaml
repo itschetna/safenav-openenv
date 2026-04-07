@@ -1,0 +1,71 @@
+name: safenav
+description: AI environment for safe route selection based on crime data
+version: 1.0
+
+entrypoint:
+  module: my_env.api
+  app: app
+
+tasks:
+  - name: easy
+    description: Choose safest route from 2 options
+    grader: my_env.graders.grade_easy
+
+  - name: medium
+    description: Choose safest route from 3 options
+    grader: my_env.graders.grade_medium
+
+  - name: hard
+    description: Analyze and then choose safest route
+    grader: my_env.graders.grade_hard
+
+api:
+  reset:
+    path: /reset
+    method: POST
+    input_schema:
+      type: object
+      properties:
+        task:
+          type: string
+          enum: ["easy", "medium", "hard"]
+      required: ["task"]
+
+  step:
+    path: /step
+    method: POST
+    input_schema:
+      type: object
+      properties:
+        action:
+          type: string
+      required: ["action"]
+
+  observation_schema:
+    type: object
+    properties:
+      start:
+        type: string
+      end:
+        type: string
+      routes:
+        type: array
+        items:
+          type: object
+          properties:
+            route_id:
+              type: integer
+            crime_score:
+              type: number
+            distance:
+              type: number
+      step_count:
+        type: integer
+
+  action_space:
+    type: string
+    enum:
+      - analyze
+      - choose_route_1
+      - choose_route_2
+      - choose_route_3

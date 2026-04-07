@@ -1,0 +1,14 @@
+# server.py
+
+import uvicorn
+
+def main():
+    uvicorn.run(
+        "my_env.api:app",
+        host="0.0.0.0",
+        port=7860,
+        workers=1
+    )
+
+if __name__ == "__main__":
+    main()

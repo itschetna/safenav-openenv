@@ -1,0 +1,16 @@
+{
+  "easy": [
+    {"route_id": 1, "crime_score": 0.8, "distance": 5},
+    {"route_id": 2, "crime_score": 0.2, "distance": 6}
+  ],
+  "medium": [
+    {"route_id": 1, "crime_score": 0.6, "distance": 4},
+    {"route_id": 2, "crime_score": 0.3, "distance": 7},
+    {"route_id": 3, "crime_score": 0.4, "distance": 5}
+  ],
+  "hard": [
+    {"route_id": 1, "crime_score": 0.7, "distance": 3},
+    {"route_id": 2, "crime_score": 0.2, "distance": 8},
+    {"route_id": 3, "crime_score": 0.5, "distance": 4}
+  ]
+}
